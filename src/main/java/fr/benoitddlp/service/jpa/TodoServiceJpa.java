@@ -1,6 +1,7 @@
 package fr.benoitddlp.service.jpa;
-import fr.benoitddlp.entity.Person;
-import fr.benoitddlp.service.PersonService;
+
+import fr.benoitddlp.entity.Todo;
+import fr.benoitddlp.service.TodoService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,8 +11,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
-@Service("personService")
-public class PersonServiceJpa implements PersonService {
+@Service("todoService")
+public class TodoServiceJpa implements TodoService {
 
     private EntityManager entityManager;
 
@@ -25,53 +26,51 @@ public class PersonServiceJpa implements PersonService {
     }
 
     @Transactional(readOnly = true)
-    public Person getById(int id) {
+    public Todo getById(int id) {
         // TODO Auto-generated method stub
-        return entityManager.find(Person.class, id);
+        return entityManager.find(Todo.class, id);
     }
     @SuppressWarnings("unchecked")
     @Transactional(readOnly = true)
-    public List<Person> getAll() {
-        Query query = entityManager.createNamedQuery("Person.findAll");
-        List<Person> persons = null;
-        persons = query.getResultList();
-        return persons;
+    public List<Todo> getAll() {
+        Query query = entityManager.createNamedQuery("Todo.findAll");
+        return query.getResultList();
     }
 
     @Transactional(readOnly=false, propagation=Propagation.REQUIRED)
-    public boolean save(Person person) {
+    public boolean save(Todo todo) {
 
-        entityManager.persist(person);
+        entityManager.persist(todo);
         entityManager.flush();
 
         return true;
     }
     @Transactional(readOnly=false, propagation=Propagation.REQUIRED)
-    public boolean update(Person person) {
-        entityManager.merge(person);
+    public boolean update(Todo todo) {
+        entityManager.merge(todo);
         entityManager.flush();
         return true;
     }
     @Transactional(readOnly=false, propagation=Propagation.REQUIRED)
-    public boolean delete(Person person) {
-        person = entityManager.getReference(Person.class, person.getId());
-        if (person == null)
+    public boolean delete(Todo todo) {
+        todo = entityManager.getReference(Todo.class, todo.getId());
+        if (todo == null)
             return false;
-        entityManager.remove(person);
+        entityManager.remove(todo);
         entityManager.flush();
         return true;
     }
 
     @SuppressWarnings("unchecked")
     @Transactional(readOnly = true)
-    public Person findPerson(Person person) {
-        Person result = null;
-        Query queryFindPerson = entityManager.createNamedQuery("Person.findPerson");
-        queryFindPerson.setParameter("name", person.getName());
-        queryFindPerson.setParameter("age", person.getAge());
-        List<Person> persons = queryFindPerson.getResultList();
-        if(persons.size() > 0) {
-            result = persons.get(0);
+    public Todo find(Todo todo) {
+        Todo result = null;
+        Query queryFindTodo = entityManager.createNamedQuery("Todo.find");
+        queryFindTodo.setParameter("summary", todo.getSummary());
+        queryFindTodo.setParameter("description", todo.getDescription());
+        List<Todo> todos = queryFindTodo.getResultList();
+        if(todos.size() > 0) {
+            result = todos.get(0);
         }
         return result;
     }

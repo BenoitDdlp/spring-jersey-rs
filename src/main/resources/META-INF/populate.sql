@@ -1,3 +1,2 @@
-INSERT INTO person VALUES (1,'John Doe', 37);
-INSERT INTO person VALUES (2,'Jack Smith', 25);
-INSERT INTO person VALUES (3,'Linda Douglas', 25);
+INSERT INTO todo VALUES (1,'faire le café', 'filtre+cafe');
+INSERT INTO todo VALUES (2,'faire à manger', 'boite+micronde');

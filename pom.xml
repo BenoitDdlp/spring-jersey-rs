@@ -152,6 +152,11 @@ http://blog.interface21.com/main/2007/06/11/asm-version-incompatibilities-using-
             <version>${jersey-version}</version>
         </dependency>
         <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>${jersey-version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-spring</artifactId>
             <version>${jersey-version}</version>
@@ -265,7 +270,6 @@ http://blog.interface21.com/main/2007/06/11/asm-version-incompatibilities-using-
 
                             <autocommit>true</autocommit>
                             <encoding>UTF-8</encoding>
-                            <print>true</print>
                             <onError>continue</onError>
                             <delimiter>;</delimiter>
                             <orderFile>ascending</orderFile>

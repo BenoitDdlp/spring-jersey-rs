@@ -4,7 +4,7 @@
              version="1.0">
 
     <persistence-unit name="testa" transaction-type="RESOURCE_LOCAL">
-        <class>fr.benoitddlp.entity.Person</class>
+        <class>fr.benoitddlp.entity.Todo</class>
     </persistence-unit>
 
 </persistence>

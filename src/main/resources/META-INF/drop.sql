@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS person;
+DROP INDEX IF EXISTS primary_key_8;

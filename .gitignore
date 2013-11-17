@@ -1,4 +1,8 @@
 *.class
+*.iml
+.idea
+target
+database/bdd.h2.db
 
 # Package Files #
 *.jar

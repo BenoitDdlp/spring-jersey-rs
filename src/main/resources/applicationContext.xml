@@ -16,13 +16,13 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.h2.Driver" />
 
-        <!-- where the db will be placed (created automatically) -->
+        <!-- database access (set those in pom.xml too)-->
         <property name="url" value="jdbc:h2:tcp://localhost/bdd;MODE=MySQL" />
         <property name="username" value="sa" />
         <property name="password" value="" />
     </bean>
 
-    <!-- database configuration (configured in the pom.xml for embedded database -->
+    <!-- database configuration (set those in pom.xml too)-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="fr.benoitddlp.entity" />
